@@ -168,12 +168,12 @@ function Model() {
     const sequenceLength = val(sheet.sequence.pointer.length)
     sheet.sequence.position = scroll.offset * sequenceLength
 
-    const cameraDistances = new Map([
+    const cameraDistances = [
       [human, camera.position.distanceTo(human.position)],
       [cat, camera.position.distanceTo(cat.position)]
-    ])
+    ]
 
-    const newMeshToOutline = Array.from(cameraDistances).reduce(
+    const newMeshToOutline = cameraDistances.reduce(
       ([accMesh, accDistance], [mesh, distance]) =>
         accDistance < distance ? [accMesh, accDistance] : [mesh, distance],
       [null, crosshairThreshold]
