@@ -65,24 +65,26 @@ function Crosshair({ target }) {
         target.position.y + crosshairWidth * 2 + crosshairPadding + targetMeshHeight / 2,
         target.position.z
       ]}
-      geometry={geometry}>
+      geometry={geometry}
+    >
       <meshBasicMaterial color={crosshairColor} />
       <CrosshairPeripheryLines crosshairSize={crosshairSize} topOffset={crosshairWidth * 2} />
     </mesh>
   )
 }
 
+const verticalPoints = []
+verticalPoints.push(new THREE.Vector3(0, 0, 0))
+verticalPoints.push(new THREE.Vector3(0, crosshairPeripheryLineLength, 0))
+
+const horizontalPoints = []
+horizontalPoints.push(new THREE.Vector3(0, 0, 0))
+horizontalPoints.push(new THREE.Vector3(crosshairPeripheryLineLength, 0, 0))
+
+const verticalLineGeometry = new THREE.BufferGeometry().setFromPoints(verticalPoints)
+const horizontalLineGeometry = new THREE.BufferGeometry().setFromPoints(horizontalPoints)
+
 function CrosshairPeripheryLines({ crosshairSize, topOffset }) {
-  const verticalPoints = []
-  verticalPoints.push(new THREE.Vector3(0, 0, 0))
-  verticalPoints.push(new THREE.Vector3(0, crosshairPeripheryLineLength, 0))
-
-  const horizontalPoints = []
-  horizontalPoints.push(new THREE.Vector3(0, 0, 0))
-  horizontalPoints.push(new THREE.Vector3(crosshairPeripheryLineLength, 0, 0))
-
-  const verticalLineGeometry = new THREE.BufferGeometry().setFromPoints(verticalPoints)
-  const horizontalLineGeometry = new THREE.BufferGeometry().setFromPoints(horizontalPoints)
   return (
     <>
       <Center position={[0, crosshairSize / 2 - topOffset, 0]} top>
