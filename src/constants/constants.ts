@@ -1,0 +1,11 @@
+export const humanSkinColor = '#FC9'
+export const floorSize = 1000
+export const sunPosition: [number, number, number] = [10, 60, 200]
+export const crosshairThreshold = 40
+export const crosshairColor = 'orange'
+export const crosshairWidth = 0.1
+export const crosshairPadding = 0.3
+export const crosshairPeripheryLineLength = 10000
+export const shadowCameraResolution = 40
+export const skyDistance = 4500
+export const floorTextureSrc = './img/TilePattern-n1_UR_1024.png'
