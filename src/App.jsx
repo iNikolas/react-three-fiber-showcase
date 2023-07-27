@@ -73,35 +73,6 @@ function Crosshair({ target }) {
 }
 
 function CrosshairPeripheryLines({ crosshairSize, topOffset }) {
-  const [topRef, setTopRef] = React.useState(null)
-  const [bottomRef, setBottomRef] = React.useState(null)
-  const [leftRef, setLeftRef] = React.useState(null)
-  const [rightRef, setRightRef] = React.useState(null)
-
-  React.useEffect(() => {
-    if (topRef) {
-      topRef.position.y += crosshairSize / 2 - topOffset
-    }
-  }, [topRef, crosshairSize, topOffset])
-
-  React.useEffect(() => {
-    if (bottomRef) {
-      bottomRef.position.y -= crosshairSize / 2
-    }
-  }, [bottomRef, crosshairSize])
-
-  React.useEffect(() => {
-    if (leftRef) {
-      leftRef.position.x -= crosshairSize / 2
-    }
-  }, [leftRef, crosshairSize])
-
-  React.useEffect(() => {
-    if (rightRef) {
-      rightRef.position.x += crosshairSize / 2
-    }
-  }, [rightRef, crosshairSize])
-
   const verticalPoints = []
   verticalPoints.push(new THREE.Vector3(0, 0, 0))
   verticalPoints.push(new THREE.Vector3(0, crosshairPeripheryLineLength, 0))
@@ -114,23 +85,23 @@ function CrosshairPeripheryLines({ crosshairSize, topOffset }) {
   const horizontalLineGeometry = new THREE.BufferGeometry().setFromPoints(horizontalPoints)
   return (
     <>
-      <Center top>
-        <line ref={setTopRef} geometry={verticalLineGeometry}>
+      <Center position={[0, crosshairSize / 2 - topOffset, 0]} top>
+        <line geometry={verticalLineGeometry}>
           <lineBasicMaterial attach="material" color={crosshairColor} />
         </line>
       </Center>
-      <Center bottom>
-        <line ref={setBottomRef} geometry={verticalLineGeometry}>
+      <Center position={[0, -crosshairSize / 2, 0]} bottom>
+        <line geometry={verticalLineGeometry}>
           <lineBasicMaterial attach="material" color={crosshairColor} />
         </line>
       </Center>
-      <Center left>
-        <line ref={setLeftRef} geometry={horizontalLineGeometry}>
+      <Center position={[-crosshairSize / 2, 0, 0]} left>
+        <line geometry={horizontalLineGeometry}>
           <lineBasicMaterial attach="material" color={crosshairColor} />
         </line>
       </Center>
-      <Center right>
-        <line ref={setRightRef} geometry={horizontalLineGeometry}>
+      <Center position={[crosshairSize / 2, 0, 0]} right>
+        <line geometry={horizontalLineGeometry}>
           <lineBasicMaterial attach="material" color={crosshairColor} />
         </line>
       </Center>
