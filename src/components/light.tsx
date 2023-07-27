@@ -12,7 +12,7 @@ export function Light() {
         position={sunPosition}
         castShadow
       />
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.7} />
     </>
   )
 }
