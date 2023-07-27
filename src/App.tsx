@@ -1,6 +1,6 @@
 import React from 'react'
 import * as THREE from 'three'
-import { Stats, useScroll, Loader, ScrollControls, Sky, Center } from '@react-three/drei'
+import { Stats, useScroll, Loader, useTexture, ScrollControls, Sky, Center } from '@react-three/drei'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { getProject, val } from '@theatre/core'
@@ -112,9 +112,9 @@ function CrosshairPeripheryLines({ crosshairSize, topOffset }) {
 }
 
 function Floor() {
-  const texture = useLoader(THREE.TextureLoader, './img/TilePattern-n1_UR_1024.png')
+  const texture = useTexture('./img/TilePattern-n1_UR_1024.png')
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     texture.wrapS = THREE.RepeatWrapping
     texture.wrapT = THREE.RepeatWrapping
     texture.repeat.set(100, 100)
@@ -138,8 +138,10 @@ function Model() {
   const scroll = useScroll()
 
   useFrame(({ camera }) => {
-    const sequenceLength = val(sheet.sequence.pointer.length)
-    sheet.sequence.position = scroll.offset * sequenceLength
+    if (sheet?.sequence) {
+      const sequenceLength = val(sheet.sequence.pointer.length)
+      sheet.sequence.position = scroll.offset * sequenceLength
+    }
 
     const cameraDistances = [
       [human, camera.position.distanceTo(human.position)],
