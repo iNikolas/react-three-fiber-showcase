@@ -2,8 +2,8 @@ import { Center } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import React from 'react'
 import * as THREE from 'three'
-import { crosshairColor, crosshairPadding, crosshairPeripheryLineLength, crosshairWidth } from '../../constants'
 
+import { crosshairColor, crosshairPadding, crosshairPeripheryLineLength, crosshairWidth } from '../../constants'
 import { assertIsMesh } from '../../utils'
 
 export function Crosshair({ target }: { target: THREE.Group }) {

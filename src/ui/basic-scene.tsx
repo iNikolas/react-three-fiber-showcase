@@ -1,26 +1,26 @@
-import React from 'react'
-import { Canvas } from '@react-three/fiber'
 import { Loader, ScrollControls } from '@react-three/drei'
-import { PerspectiveCamera, SheetProvider } from '@theatre/r3f'
+import { Canvas } from '@react-three/fiber'
 import { getProject } from '@theatre/core'
+import { PerspectiveCamera, SheetProvider } from '@theatre/r3f'
+import React from 'react'
 
 import { Env, Floor, Light } from '../components'
 import animatedCameraState from '../constants/animated-camera-state.json'
-import { Model } from './model'
+import { Models } from './models'
 
 export function BasicScene() {
   const sheet = getProject('Fly Through', { state: animatedCameraState }).sheet('Scene')
 
   return (
     <>
-      <Canvas gl={{ preserveDrawingBuffer: true }} shadows>
+      <Canvas shadows>
         <ScrollControls pages={4}>
           <SheetProvider sheet={sheet}>
             <Env />
             <Light />
             <React.Suspense fallback={null}>
               <Floor />
-              <Model />
+              <Models />
             </React.Suspense>
             <PerspectiveCamera
               theatreKey="Camera"
