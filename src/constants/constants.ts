@@ -7,5 +7,6 @@ export const crosshairWidth = 0.1
 export const crosshairPadding = 0.3
 export const crosshairPeripheryLineLength = 10000
 export const shadowCameraResolution = 40
+export const ambientLightIntensity = 0.8
 export const skyDistance = 4500
 export const floorTextureSrc = './img/TilePattern-n1_UR_1024.png'

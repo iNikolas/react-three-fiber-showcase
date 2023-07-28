@@ -1,5 +1,4 @@
-import React from 'react'
-import { shadowCameraResolution, sunPosition } from '../constants'
+import { ambientLightIntensity, shadowCameraResolution, sunPosition } from '../constants'
 
 export function Light() {
   return (
@@ -12,7 +11,7 @@ export function Light() {
         position={sunPosition}
         castShadow
       />
-      <ambientLight intensity={0.7} />
+      <ambientLight intensity={ambientLightIntensity} />
     </>
   )
 }
