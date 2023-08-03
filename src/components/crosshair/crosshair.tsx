@@ -37,10 +37,8 @@ export function Crosshair({ target }: { target: THREE.Group }) {
   }, [targetMesh, targetMeshHeight])
 
   useFrame(({ camera }) => {
-    if (crossHairRef && crossHairRef.current) {
-      crossHairRef.current.rotation.x = camera.rotation.x
-      crossHairRef.current.rotation.y = camera.rotation.y
-      crossHairRef.current.rotation.z = camera.rotation.z
+    if (crossHairRef.current) {
+      crossHairRef.current.lookAt(camera.position)
     }
   })
 
