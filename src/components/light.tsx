@@ -8,6 +8,7 @@ export function Light() {
         shadow-camera-right={shadowCameraResolution}
         shadow-camera-top={shadowCameraResolution}
         shadow-camera-bottom={-shadowCameraResolution}
+        shadow-camera-far={sunPosition[2] + shadowCameraResolution * 2}
         position={sunPosition}
         castShadow
       />

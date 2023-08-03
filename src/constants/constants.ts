@@ -1,6 +1,6 @@
 export const humanSkinColor = '#FC9'
 export const floorSize = 1000
-export const sunPosition: [number, number, number] = [10, 60, 200]
+export const sunPosition: [number, number, number] = [10, 10, 30]
 export const crosshairThreshold = 40
 export const crosshairColor = 'orange'
 export const crosshairWidth = 0.1
