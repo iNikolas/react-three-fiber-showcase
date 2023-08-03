@@ -38,7 +38,9 @@ export function Crosshair({ target }: { target: THREE.Group }) {
 
   useFrame(({ camera }) => {
     if (crossHairRef.current) {
-      crossHairRef.current.lookAt(camera.position)
+      crossHairRef.current.rotation.x = camera.rotation.x
+      crossHairRef.current.rotation.y = camera.rotation.y
+      crossHairRef.current.rotation.z = camera.rotation.z
     }
   })
 
